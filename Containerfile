@@ -19,8 +19,14 @@ RUN sed -i -e 's/NoProgressBar/#NoProgressBar/' -e 's/NoExtract/#NoExtract/' /et
 # Force reinstall of packages which have man pages (shouldn't redownload any that were just upgraded)
 RUN mkdir -p /usr/share/man && pacman -Qo /usr/share/man | awk '{print $5}' | xargs pacman -S --noconfirm man-db
 
+# COPY add-aur.sh /
+# RUN bash /add-aur.sh
+# RUN aur-install delta
+# RUN rm /add-aur.sh
+
 # Clean up cache
 RUN yes | pacman -Scc
+
 
 # Enable sudo permission for wheel users
 RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/toolbox
