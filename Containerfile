@@ -4,8 +4,9 @@ LABEL com.github.containers.toolbox="true" \
       name="daylinbox" \
       version="base-devel" \
       usage="This image is meant to be used by daylin" \
-      maintainer="Daylin Morgan <me@dayl.in>"
-      # summary="Base image for creating Arch Linux Toolbx containers" \
+      maintainer="Daylin Morgan <me@dayl.in>" \
+      summary="Daylin's distrobox Conatiner"
+
 # Install extra packages
 COPY extra-packages my-extra-packages /
 RUN pacman -Syu --needed --noconfirm - < extra-packages
@@ -29,7 +30,6 @@ RUN wget -qcO /usr/bin/pixi \
 
 # Clean up cache
 RUN yes | pacman -Scc
-
 
 # Enable sudo permission for wheel users
 RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/toolbox
