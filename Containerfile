@@ -7,6 +7,9 @@ LABEL com.github.containers.toolbox="true" \
       maintainer="Daylin Morgan <me@dayl.in>" \
       summary="Daylin's distrobox Conatiner"
 
+# unclear if this is needed
+RUN pacman-key --init
+
 # Install extra packages
 COPY extra-packages my-extra-packages /
 RUN pacman -Syu --needed --noconfirm - < extra-packages
