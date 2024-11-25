@@ -8,11 +8,11 @@ if not (
     _src.parent.mkdir(exist_ok=True)
     _src.write_text(_r.read().decode())
 
-from swydd import task, sub, cli, ctx
+from swydd import task, sub, cli
 
 @task
 def build():
     """build the image (forwards positioanl args)"""
-    sub("podman build . -t daylinbox " + " ".join(ctx.rest))
+    sub("podman build . -t daylinbox ", rest=True)
 
 cli("build")

@@ -5,7 +5,9 @@ fd
 fzf
 git-delta
 lazygit
+jujutsu
 neovim
 python
 ripgrep
+tmux
 zoxide
