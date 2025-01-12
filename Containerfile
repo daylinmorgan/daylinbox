@@ -23,7 +23,7 @@ RUN sed -i -e 's/NoProgressBar/#NoProgressBar/' -e 's/NoExtract/#NoExtract/' /et
 RUN mkdir -p /usr/share/man && pacman -Qo /usr/share/man | awk '{print $5}' | xargs pacman -S --noconfirm man-db
 
 RUN wget -qcO /usr/bin/pixi \
-  https://github.com/prefix-dev/pixi/releases/download/v0.33.0/pixi-x86_64-unknown-linux-musl \
+  https://github.com/prefix-dev/pixi/releases/download/v0.39.5/pixi-x86_64-unknown-linux-musl \
   && chmod +x /usr/bin/pixi
 
 # COPY add-aur.sh /

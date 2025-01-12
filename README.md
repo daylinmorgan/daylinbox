@@ -22,6 +22,5 @@ distrobox enter daylinbox
 
 ## possible future improvements
 
-- addition of `pixi`
 - make microsoft build and host the image?
 
