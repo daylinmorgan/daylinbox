@@ -1,4 +1,5 @@
-FROM docker.io/library/archlinux:base-devel
+# FROM docker.io/library/archlinux:base-devel
+FROM docker.io/library/archlinux:base-devel-20250105.0.295102
 
 LABEL com.github.containers.toolbox="true" \
       name="daylinbox" \
