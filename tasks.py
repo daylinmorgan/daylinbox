@@ -12,7 +12,8 @@ from swydd import task, sub, cli
 
 @task
 def build():
-    """build the image (forwards positioanl args)"""
+    """build the image (forwards positional args)"""
     sub("podman build . -t daylinbox ", rest=True)
+
 
 cli("build")

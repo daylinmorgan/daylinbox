@@ -8,20 +8,21 @@ LABEL com.github.containers.toolbox="true" \
       maintainer="Daylin Morgan <me@dayl.in>" \
       summary="Daylin's distrobox Conatiner"
 
+# Kernel feature not available in a container image?
+RUN echo "DisableSandbox" >> /etc/pacman.conf
+
 # unclear if this is needed
-RUN pacman-key --init
+# RUN pacman-key --init
 
 # Install extra packages
-COPY extra-packages my-extra-packages /
-RUN pacman -Syu --needed --noconfirm - < extra-packages
-RUN pacman -Syu --needed --noconfirm - < my-extra-packages
-RUN rm /extra-packages /my-extra-packages
+COPY extra-packages /tmp
+RUN pacman -Syu --needed --noconfirm - < /tmp/extra-packages && rm /tmp/extra-packages
 
-# Enable man pages, enable progress bars
-RUN sed -i -e 's/NoProgressBar/#NoProgressBar/' -e 's/NoExtract/#NoExtract/' /etc/pacman.conf
+COPY my-extra-packages /tmp
+RUN pacman -Syu --needed --noconfirm - < /tmp/my-extra-packages && rm /tmp/my-extra-packages
 
-# Force reinstall of packages which have man pages (shouldn't redownload any that were just upgraded)
-RUN mkdir -p /usr/share/man && pacman -Qo /usr/share/man | awk '{print $5}' | xargs pacman -S --noconfirm man-db
+# Clean up cache
+RUN pacman -Scc --noconfirm
 
 RUN wget -qcO /usr/bin/pixi \
   https://github.com/prefix-dev/pixi/releases/download/v0.39.5/pixi-x86_64-unknown-linux-musl \
@@ -31,9 +32,6 @@ RUN wget -qcO /usr/bin/pixi \
 # RUN bash /add-aur.sh
 # RUN aur-install delta
 # RUN rm /add-aur.sh
-
-# Clean up cache
-RUN yes | pacman -Scc
 
 # Enable sudo permission for wheel users
 RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/toolbox
