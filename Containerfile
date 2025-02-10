@@ -24,9 +24,15 @@ RUN pacman -Syu --needed --noconfirm - < /tmp/my-extra-packages && rm /tmp/my-ex
 # Clean up cache
 RUN pacman -Scc --noconfirm
 
+ARG PIXI_VERSION=0.41.1
 RUN wget -qcO /usr/bin/pixi \
-  https://github.com/prefix-dev/pixi/releases/download/v0.39.5/pixi-x86_64-unknown-linux-musl \
+  https://github.com/prefix-dev/pixi/releases/download/v${PIXI_VERSION}/pixi-x86_64-unknown-linux-musl \
   && chmod +x /usr/bin/pixi
+
+ARG CHOOSENIM_VERSION=0.8.12
+RUN wget -qcO /usr/bin/choosenim \
+  https://github.com/nim-lang/choosenim/releases/download/v${CHOOSENIM_VERSION}/choosenim-${CHOOSENIM_VERSION}_linux_amd64 \
+  && chmod +x /usr/bin/choosenim
 
 # COPY add-aur.sh /
 # RUN bash /add-aur.sh
