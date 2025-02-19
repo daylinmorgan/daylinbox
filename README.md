@@ -7,7 +7,7 @@ To use ensure `podman` is installed.
 Then build the image:
 
 ```sh
-make build
+./tasks.py build
 ```
 
 Then create and enter a distrobox:
