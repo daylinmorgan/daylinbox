@@ -29,6 +29,13 @@ RUN wget -qcO /usr/bin/pixi \
   https://github.com/prefix-dev/pixi/releases/download/v${PIXI_VERSION}/pixi-x86_64-unknown-linux-musl \
   && chmod +x /usr/bin/pixi
 
+ARG UV_VERSION=0.7.21
+RUN wget -qcO /tmp/uv.tar.gz \
+  https://github.com/astral-sh/uv/releases/download/${UV_VERSION}/uv-x86_64-unknown-linux-gnu.tar.gz \
+  && tar -xzf /tmp/uv.tar.gz -C /tmp \
+  && cp /tmp/uv-x86_64-unknown-linux-gnu/* /usr/bin/ \
+  && chmod +x /usr/bin/uv /usr/bin/uvx
+
 ARG CHOOSENIM_VERSION=0.8.16
 RUN wget -qcO /usr/bin/choosenim \
   https://github.com/nim-lang/choosenim/releases/download/v${CHOOSENIM_VERSION}/choosenim-${CHOOSENIM_VERSION}_linux_amd64 \
