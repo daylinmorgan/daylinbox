@@ -29,10 +29,11 @@ RUN wget -qcO /usr/bin/pixi \
   https://github.com/prefix-dev/pixi/releases/download/v${PIXI_VERSION}/pixi-x86_64-unknown-linux-musl \
   && chmod +x /usr/bin/pixi
 
-ARG CHOOSENIM_VERSION=0.8.12
+ARG CHOOSENIM_VERSION=0.8.16
 RUN wget -qcO /usr/bin/choosenim \
   https://github.com/nim-lang/choosenim/releases/download/v${CHOOSENIM_VERSION}/choosenim-${CHOOSENIM_VERSION}_linux_amd64 \
-  && chmod +x /usr/bin/choosenim
+  && chmod +x /usr/bin/choosenim \
+  && /usr/bin/choosenim stable
 
 # COPY add-aur.sh /
 # RUN bash /add-aur.sh
