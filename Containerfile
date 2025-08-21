@@ -42,6 +42,12 @@ RUN wget -qcO /usr/bin/choosenim \
   && chmod +x /usr/bin/choosenim \
   && /usr/bin/choosenim stable
 
+ARG ZIG_VERSION=0.15.1
+RUN wget -qcO /tmp/zig.tar.xz https://ziglang.org/download/${ZIG_VERSION}/zig-x86_64-linux-${ZIG_VERSION}.tar.xz \
+  && mkdir /opt/zig \
+  && tar -Jxf /tmp/zig.tar.xz --strip-components=1 -C /opt/zig \
+  && ln -s /opt/zig/zig /usr/bin/zig
+
 # COPY add-aur.sh /
 # RUN bash /add-aur.sh
 # RUN aur-install delta
