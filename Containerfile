@@ -1,5 +1,6 @@
-# FROM docker.io/library/archlinux:base-devel
-FROM docker.io/library/archlinux:base-devel-20250105.0.295102
+# FROM docker.io/archlinux/archlinux:base-devel
+# FROM docker.io/archlinux/archlinux:base-devel-20250821.0.408501
+FROM docker.io/archlinux/archlinux@sha256:48e967f6743a36f0f898da42df321cd5b903844f5af02989b64e52d62aad69ee
 
 LABEL com.github.containers.toolbox="true" \
       name="daylinbox" \
@@ -39,8 +40,7 @@ RUN wget -qcO /tmp/uv.tar.gz \
 ARG CHOOSENIM_VERSION=0.8.16
 RUN wget -qcO /usr/bin/choosenim \
   https://github.com/nim-lang/choosenim/releases/download/v${CHOOSENIM_VERSION}/choosenim-${CHOOSENIM_VERSION}_linux_amd64 \
-  && chmod +x /usr/bin/choosenim \
-  && /usr/bin/choosenim stable
+  && chmod +x /usr/bin/choosenim
 
 ARG ZIG_VERSION=0.15.1
 RUN wget -qcO /tmp/zig.tar.xz https://ziglang.org/download/${ZIG_VERSION}/zig-x86_64-linux-${ZIG_VERSION}.tar.xz \
