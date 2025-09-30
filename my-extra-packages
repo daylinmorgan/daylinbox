@@ -11,4 +11,5 @@ python
 python-pip
 ripgrep
 tmux
+tree-sitter-cli
 zoxide
