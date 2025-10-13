@@ -48,10 +48,15 @@ RUN wget -qcO /tmp/zig.tar.xz https://ziglang.org/download/${ZIG_VERSION}/zig-x8
   && tar -Jxf /tmp/zig.tar.xz --strip-components=1 -C /opt/zig \
   && ln -s /opt/zig/zig /usr/bin/zig
 
-# COPY add-aur.sh /
-# RUN bash /add-aur.sh
-# RUN aur-install delta
+ARG FNM_VERSION=1.38.1
+RUN wget -qcO /tmp/fnm.zip https://github.com/Schniz/fnm/releases/download/v${FNM_VERSION}/fnm-linux.zip \
+  && unzip -j /tmp/fnm.zip fnm -d /usr/bin
+
+# COPY scripts/ /tmp/scripts
+# RUN bash /tmp/scripts/add-aur.sh
+# RUN aur-install fnm
 # RUN rm /add-aur.sh
+
 
 # Enable sudo permission for wheel users
 RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/toolbox

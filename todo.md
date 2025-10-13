@@ -1,6 +1,6 @@
 # daylinbox todo's
 
-- [ ] solve this:
+- [ ] solve issue with gpgconf
   got this error on distrobox enter for the first time?:
 
 > Container Setup Complete!
