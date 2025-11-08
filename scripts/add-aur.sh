@@ -7,7 +7,7 @@ set -o verbose
 set -o xtrace
 
 AUR_USER="${1:-ab}"
-HELPER="${2:-paru}"
+HELPER="${2:-yay}"
 
 # update mirrorlist
 #curl --silent --location https://raw.githubusercontent.com/greyltc/docker-archlinux/master/get-new-mirrors.sh > /tmp/get-new-mirrors
