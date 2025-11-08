@@ -4,6 +4,7 @@ eza
 fd
 fzf
 git-delta
+github-cli
 lazygit
 jujutsu
 neovim
@@ -13,3 +14,5 @@ ripgrep
 tmux
 tree-sitter-cli
 zoxide
+uv
+pixi
