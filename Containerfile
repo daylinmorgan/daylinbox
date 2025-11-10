@@ -51,4 +51,5 @@ RUN wget -qcO /tmp/zig.tar.xz https://ziglang.org/download/${ZIG_VERSION}/zig-x8
 
 COPY scripts/add-aur.sh /
 RUN bash /add-aur.sh && rm /add-aur.sh
-RUN aur-install fnm
+COPY aur-packages /
+RUN aur-install $(cat aur-packages) && rm /aur-packages
