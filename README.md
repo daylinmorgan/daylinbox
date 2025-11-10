@@ -20,7 +20,10 @@ distrobox enter daylinbox
 `./extra-packages` was copied over from the original container build.
 `./my-extra-packages` is the list of tools I want around in these containers.
 
-## possible future improvements
+## init
 
-- make microsoft build and host the image?
+```sh
+curl -fsSL https://git.dayl.in/daylin/daylinbox/raw/branch/main/init.py | python3 -
+```
+
 

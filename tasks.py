@@ -16,5 +16,9 @@ def build():
     """build the image (forwards positional args)"""
     sub("podman build . -t daylinbox ", rest=True)
 
+@task
+def init():
+    build()
+    sub("./init.py --local")
 
 cli("build")
