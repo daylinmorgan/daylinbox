@@ -37,15 +37,17 @@ def get_image_name(local: bool, image: str, tag: str) -> str:
 
 def prepare_home(home: Path):
     if home.is_dir():
+        print("home directory already exists")
         return
     print("preparing home directory of distrobox")
     home.mkdir(parents=True)
     (home / ".config").symlink_to(Path.home() / ".config")
+    if (Path.home() / ".gnupg").is_dir():
+        ( home / ".gnupg").symlink_to(Path.home() / ".gnupg")
 
 
 def main():
     args = parse_args()
-    print(args)
     prepare_home(args.home)
     create_box(
         args.name,
