@@ -18,6 +18,7 @@ def build():
 
 @task
 def init():
+    """build image and then run the init script"""
     build()
     sub("./init.py --local")
 
