@@ -56,11 +56,7 @@ install -o "${AUR_USER}" -d "${FOREIGN_PKG}"
 # get helper pkgbuild
 # sudo -u "${AUR_USER}" -D~ bash -c "curl --silent --location https://aur.archlinux.org/cgit/aur.git/snapshot/${HELPER}.tar.gz | bsdtar -xvf -"
 TEMP_TARBALL="/tmp/${HELPER}.tar.gz"
-sudo -u "${AUR_USER}" bash -c "curl --silent --fail --location https://aur.archlinux.org/cgit/aur.git/snapshot/${HELPER}.tar.gz -o ${TEMP_TARBALL}"
-if [ $? -ne 0 ]; then
-    echo "ERROR: Failed to download AUR helper '${HELPER}'. Exiting." >&2
-    exit 1
-fi
+sudo -u "${AUR_USER}" bash -c "curl --fail --location https://aur.archlinux.org/cgit/aur.git/snapshot/${HELPER}.tar.gz -o ${TEMP_TARBALL}"
 sudo -u "${AUR_USER}" -D~ bash -c "bsdtar -xvf ${TEMP_TARBALL}"
 #######
 
