@@ -1,6 +1,4 @@
-# FROM docker.io/archlinux/archlinux:base-devel
-# FROM docker.io/archlinux/archlinux:base-devel-20250821.0.408501
-FROM docker.io/archlinux/archlinux@sha256:48e967f6743a36f0f898da42df321cd5b903844f5af02989b64e52d62aad69ee
+FROM docker.io/archlinux/archlinux:base-devel
 
 LABEL com.github.containers.toolbox="true" \
       name="daylinbox" \
@@ -12,7 +10,6 @@ LABEL com.github.containers.toolbox="true" \
 # # Kernel feature not available in a container image?
 # RUN echo "DisableSandbox" >> /etc/pacman.conf
 
-# unclear if this is needed
 # RUN pacman-key --init
 
 # Install extra packages
