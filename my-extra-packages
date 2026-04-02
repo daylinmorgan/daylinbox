@@ -20,3 +20,6 @@ python-pip
 pixi
 uv
 ruff
+
+bubblewrap
+socat
