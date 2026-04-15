@@ -22,4 +22,4 @@ def init():
     build()
     sub("./init.py --local")
 
-cli("build")
+cli()

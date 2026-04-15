@@ -40,7 +40,7 @@ RUN wget -qcO /usr/bin/choosenim \
   https://github.com/nim-lang/choosenim/releases/download/v${CHOOSENIM_VERSION}/choosenim-${CHOOSENIM_VERSION}_linux_amd64 \
   && chmod +x /usr/bin/choosenim
 
-ARG ZIG_VERSION=0.15.1
+ARG ZIG_VERSION=0.16.0
 RUN wget -qcO /tmp/zig.tar.xz https://ziglang.org/download/${ZIG_VERSION}/zig-x86_64-linux-${ZIG_VERSION}.tar.xz \
   && mkdir /opt/zig \
   && tar -Jxf /tmp/zig.tar.xz --strip-components=1 -C /opt/zig \
