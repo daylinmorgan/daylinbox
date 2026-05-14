@@ -5,6 +5,8 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+  schedule:
+    - cron: '0 0 * * 0'
 
 env:
   REGISTRY: ghcr.io
@@ -33,6 +35,9 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=schedule,pattern=weekly-{{date 'YYMMDD'}}
+            type=raw,value=latest,enable={{ github.event_name == 'push' }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
