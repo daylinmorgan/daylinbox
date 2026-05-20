@@ -6,6 +6,7 @@ fzf
 zoxide
 ripgrep
 tmux
+jq
 
 neovim
 tree-sitter-cli
@@ -23,3 +24,4 @@ ruff
 
 bubblewrap
 socat
+
